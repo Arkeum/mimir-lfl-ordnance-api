@@ -1,8 +1,7 @@
 package fr.dpeynot.mimir.domain;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import org.springframework.context.annotation.Primary;
 
 import java.time.LocalDateTime;
@@ -12,6 +11,9 @@ import java.util.UUID;
 @Table(name = "players")
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class PlayerEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)

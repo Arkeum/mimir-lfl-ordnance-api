@@ -11,8 +11,12 @@ import fr.dpeynot.mimir.services.interfaces.internals.PlayerInternalService;
 import fr.dpeynot.mimir.services.interfaces.publics.PlayerPublicService;
 import fr.dpeynot.mimir.utilities.mappers.PlayerMapper;
 import jakarta.transaction.Transactional;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.validation.annotation.Validated;
 
 import java.util.UUID;
 

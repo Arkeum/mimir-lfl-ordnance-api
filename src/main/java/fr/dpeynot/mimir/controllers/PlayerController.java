@@ -22,9 +22,9 @@ public class PlayerController {
         return ResponseEntity.ok(playerService.getByDiscordId(discord_id));
     }
 
-    @PostMapping("/players")
-    public ResponseEntity<PlayerRegisterOutputDto> registerPlayer(@RequestBody PlayerRegisterInputDto playerRegisterInputDto) {
-        return ResponseEntity.ok(playerService.register(playerRegisterInputDto));
-    }
+//    @PostMapping("/players")
+//    public ResponseEntity<PlayerRegisterOutputDto> registerPlayer(@RequestBody PlayerRegisterInputDto playerRegisterInputDto) {
+//        return ResponseEntity.ok(playerService.register(playerRegisterInputDto));
+//    }
 
 }

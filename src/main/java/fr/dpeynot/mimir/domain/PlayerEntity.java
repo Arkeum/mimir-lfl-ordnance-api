@@ -1,5 +1,6 @@
 package fr.dpeynot.mimir.domain;
 
+import fr.dpeynot.mimir.enumerations.PlayerStatusEnum;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.context.annotation.Primary;
@@ -14,7 +15,7 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class PlayerEntity {
+public class PlayerEntity extends AuditTemplate {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
@@ -24,6 +25,9 @@ public class PlayerEntity {
 
     @Column
     private long discordId;
+
+    @Column
+    private PlayerStatusEnum status;
 
     @Column
     private LocalDateTime registrationDate;

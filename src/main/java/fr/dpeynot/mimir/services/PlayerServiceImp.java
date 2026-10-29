@@ -18,6 +18,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Service
@@ -34,6 +35,10 @@ public class PlayerServiceImp implements PlayerPublicService, PlayerInternalServ
                 });
 
         PlayerEntity playerEntity = playerMapper.toPlayerEntity(playerRegisterInputDto);
+
+        LocalDateTime transactionDateTime = LocalDateTime.now();
+        playerEntity.setRegistrationDate(transactionDateTime);
+        playerEntity.setLastSeen(transactionDateTime);
 
         playerRepository.save(playerEntity);
 

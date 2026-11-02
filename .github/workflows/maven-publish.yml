@@ -4,9 +4,59 @@
 name: Maven Package
 
 on:
-  release:
-    types: [created]
+  push:
+    branches:
+      - snapshot
+    tags:
+      - 'v*'
 
+env:
+  REPOSITORY: quay.io/arkeum/mimir
+
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Set up JDK 27
+        uses: actions/setup-java@v4
+        with:
+          java-version: 27
+          distribution: temurin
+          cache: maven
+
+      - name: Build and test
+        run: ./mvnw verify -B
+    
+  image:
+    needs: test
+    strategy:
+      matrix:
+        include:
+          - arch: arm64
+            runner: ubuntu-24.04-arm
+    runs-on: ${{ matrix.runner }}
+
+  
+  services:
+      postgres:
+        image: postgres:17
+        env:
+          POSTGRES_DB: mimir
+          POSTGRES_USER: mimir
+          POSTGRES_PASSWORD: mimir
+        ports: [ '5432:5432' ]
+        options: >-
+          --health-cmd "pg_isready -U mimir" --health-interval 5s --health-timeout 5s --health-retries 10
+
+
+
+
+
+  
+  
 jobs:
   build:
 

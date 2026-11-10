@@ -7,8 +7,6 @@ on:
   push:
     branches:
       - snapshot
-    tags:
-      - 'v*'
 
 env:
   REPOSITORY: quay.io/arkeum/mimir

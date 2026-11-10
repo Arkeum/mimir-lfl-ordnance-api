@@ -1,17 +1,5 @@
-# This workflow will build a package using Maven and then publish it to GitHub packages when a release is created
-# For more information see: https://github.com/actions/setup-java/blob/main/docs/advanced-usage.md#apache-maven-with-a-settings-path
-
 name: Maven Package
-
-on:
-  push:
-    branches:
-      - snapshot
-
-env:
-  REPOSITORY: quay.io/arkeum/mimir
-
-
+on: [push]
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -19,7 +7,7 @@ jobs:
       - uses: actions/checkout@v5
 
       - name: Set up JDK 27
-        uses: actions/setup-java@v4
+        uses: actions/setup-java@v5
         with:
           java-version: 27
           distribution: temurin

@@ -20,6 +20,7 @@ public class PlayerController {
     @GetMapping("/players/discord_id/{discord_id}")
     public ResponseEntity<PlayerGetOutputDto> getPlayerByDiscordId(@PathVariable Long discord_id) {
         return ResponseEntity.ok(playerService.getByDiscordId(discord_id));
+
     }
 
 //    @PostMapping("/players")

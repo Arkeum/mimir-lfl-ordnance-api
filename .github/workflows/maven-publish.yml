@@ -1,4 +1,4 @@
-name: Maven Package
+name: Mimir API CI
 on: [push]
 jobs:
   test:

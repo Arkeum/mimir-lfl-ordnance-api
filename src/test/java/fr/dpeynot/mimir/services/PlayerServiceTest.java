@@ -8,17 +8,21 @@ import fr.dpeynot.mimir.services.interfaces.internals.PlayerInternalService;
 import fr.dpeynot.mimir.services.interfaces.publics.PlayerPublicService;
 import jakarta.validation.ConstraintViolationException;
 import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.TestConstructor;
 import org.springframework.transaction.annotation.Transactional;
 
 @SpringBootTest
-@AllArgsConstructor(onConstructor_ = @Autowired)
 public class PlayerServiceTest {
-    private final PlayerInternalService playerService;
-    private final PlayerPublicService playerPublicService;
+    @Autowired
+    private PlayerInternalService playerService;
+
+    @Autowired
+    private PlayerPublicService playerPublicService;
 
     @Test
     @Transactional

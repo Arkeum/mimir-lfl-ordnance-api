@@ -2,13 +2,12 @@ name: Mimir API CI
 on: [push]
 env:
   IMAGE: quay.io/arkeum/mimir
-  LATEST: quay.io/arkeum/mimir:latest
   
 jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
 
       - name: Set up JDK 27
         uses: actions/setup-java@v5
@@ -32,6 +31,9 @@ jobs:
             runner: ubuntu-24.04-arm
     runs-on: ${{ matrix.runner }}
     steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+    
       - name: Login to Quay.io
         uses: docker/login-action@v3
         with:
@@ -39,15 +41,12 @@ jobs:
           username: ${{ secrets.QUAY_USERNAME }}
           password: ${{ secrets.QUAY_PASSWORD }}
 
-      - name: Set up QEMU
-        uses: docker/setup-qemu-action@v4
-
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v4
 
       - name: Build and export to Docker
         uses: docker/build-push-action@v7
         with:
-          load: true
-          tags: ${{ env.LATEST }}
+          push: true
+          tags: ${{ env.IMAGE }}:latest
     

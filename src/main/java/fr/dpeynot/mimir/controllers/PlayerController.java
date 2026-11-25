@@ -3,6 +3,7 @@ package fr.dpeynot.mimir.controllers;
 import fr.dpeynot.mimir.dtos.players_dtos.PlayerGetOutputDto;
 import fr.dpeynot.mimir.dtos.players_dtos.PlayerRegisterInputDto;
 import fr.dpeynot.mimir.dtos.players_dtos.PlayerRegisterOutputDto;
+import fr.dpeynot.mimir.services.interfaces.internals.PlayerInternalService;
 import fr.dpeynot.mimir.services.interfaces.publics.PlayerPublicService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -16,6 +17,7 @@ import java.util.UUID;
 public class PlayerController {
 
     private final PlayerPublicService playerService;
+    private final PlayerInternalService playerInternalService;
 
     @GetMapping("/players/discord_id/{discord_id}")
     public ResponseEntity<PlayerGetOutputDto> getPlayerByDiscordId(@PathVariable Long discord_id) {
@@ -25,7 +27,7 @@ public class PlayerController {
 
     @PostMapping("/players")
     public ResponseEntity<PlayerRegisterOutputDto> registerPlayer(@RequestBody PlayerRegisterInputDto playerRegisterInputDto) {
-        return ResponseEntity.ok(playerService.register(playerRegisterInputDto));
+        return ResponseEntity.ok(playerInternalService.register(playerRegisterInputDto));
     }
 
 }

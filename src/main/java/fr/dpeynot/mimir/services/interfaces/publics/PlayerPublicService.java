@@ -15,6 +15,6 @@ import java.util.UUID;
 @Validated
 public interface PlayerPublicService {
     PlayerGetOutputDto getByDiscordId(@Positive long discordId);
-    PlayerRegisterOutputDto register(@NotNull @Valid PlayerRegisterInputDto playerRegisterInputDto);
+    //PlayerRegisterOutputDto register(@NotNull @Valid PlayerRegisterInputDto playerRegisterInputDto);
 
 }

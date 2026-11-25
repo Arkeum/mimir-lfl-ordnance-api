@@ -10,5 +10,5 @@ import org.springframework.validation.annotation.Validated;
 import java.util.UUID;
 
 public interface PlayerInternalService {
-    PlayerRegisterOutputDto register(@NotNull @Valid PlayerRegisterInputDto playerRegisterInputDto);
+    //PlayerRegisterOutputDto register(@NotNull @Valid PlayerRegisterInputDto playerRegisterInputDto);
 }

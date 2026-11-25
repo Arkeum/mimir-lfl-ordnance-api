@@ -23,9 +23,9 @@ public class PlayerController {
 
     }
 
-//    @PostMapping("/players")
-//    public ResponseEntity<PlayerRegisterOutputDto> registerPlayer(@RequestBody PlayerRegisterInputDto playerRegisterInputDto) {
-//        return ResponseEntity.ok(playerService.register(playerRegisterInputDto));
-//    }
+    @PostMapping("/players")
+    public ResponseEntity<PlayerRegisterOutputDto> registerPlayer(@RequestBody PlayerRegisterInputDto playerRegisterInputDto) {
+        return ResponseEntity.ok(playerService.register(playerRegisterInputDto));
+    }
 
 }
